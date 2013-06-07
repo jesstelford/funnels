@@ -90,7 +90,7 @@ class Piwik_Funnels_API
 		Piwik_Query("INSERT INTO " . Piwik_Common::prefixTable('funnel')."
 					(idsite, idgoal, idfunnel)
 					VALUES (?, ?, ?)", array($idSite, $idGoal, $idFunnel));
-		Piwik_Common::regenerateCacheWebsiteAttributes($idSite);
+		Piwik_Tracker_Cache::regenerateCacheWebsiteAttributes($idSite);
 		$this->updateFunnel($idSite, $idGoal, $idFunnel, $steps);
 		return $idFunnel;
 	}

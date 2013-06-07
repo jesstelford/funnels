@@ -10,6 +10,10 @@ Updated to work with Piwik v1.5 by Jess Telford @ Zibbet.com
 Changelog
 =========
 
+Funnels 1.11.1
+--------------
+* Fixed bug to use funnels on Piwik 1.11.1
+
 Funnels 20062011
 ----------------
 * Funnels can be defined by page title as well as URL
