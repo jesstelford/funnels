@@ -20,6 +20,7 @@ class Piwik_Funnels extends Piwik_Plugin
     
     // 'magic' number to indicate a conversion that was done manually
 	const INDEX_MANUAL_CONVERSION = 0;
+    const TIME_IN_PAST_TO_SEARCH_FOR_VISITOR = 86400; //24 hours
     /**
      * Return information about this plugin.
      *
@@ -32,11 +33,11 @@ class Piwik_Funnels extends Piwik_Plugin
         return array(
             'name' => 'Funnels',
             'description' => Piwik_Translate('Funnels_PluginDescription'),
-            'author' => 'mySociety',
-            'author_homepage' => 'http://mysociety.org/',
-            'version' => '20062011',
-            'homepage' => 'http://github.com/mysociety/funnels',
+            'author' => 'Smile',
+            'author_homepage' => 'http://www.smile.fr/',
+            'version' => '1.11.1',
             'translationAvailable' => true,
+            'homepage' => 'https://github.com/YanK-fr/funnels',
             'TrackerPlugin' => true, // this plugin must be loaded during the stats logging
         );
     }
@@ -117,7 +118,7 @@ class Piwik_Funnels extends Piwik_Plugin
         // log_link_visit_action to get the refering action.
         // Also use this query to find the Visit ID of this visit
 
-		$timeLookBack = date('Y-m-d H:i:s', time() - Piwik_Tracker_Visit::TIME_IN_PAST_TO_SEARCH_FOR_VISITOR);
+		$timeLookBack = date('Y-m-d H:i:s', time() - self::TIME_IN_PAST_TO_SEARCH_FOR_VISITOR);
 
         $visits = Piwik_Query(
             "SELECT idvisit, visit_exit_idaction_url
@@ -190,7 +191,7 @@ class Piwik_Funnels extends Piwik_Plugin
     ) {
 
         printDebug('Looking for funnel steps');
-        $websiteAttributes = Piwik_Common::getCacheWebsiteAttributes( $idSite );
+        $websiteAttributes = Piwik_Tracker_Cache::getCacheWebsiteAttributes( $idSite );
         if(isset($websiteAttributes['funnels']))
         {
             $funnels = $websiteAttributes['funnels'];
