@@ -1,9 +1,13 @@
 Funnels
 =======
+
+**Note**: This plugin is no longer maintained after Piwik v1.5. Please open a Pull Request if you update it to work with the latest versions of Piwik.
+
 A Piwik (http://piwik.org/) plugin that allows the definition, analysis and visualisation of funnels associated with goals.
 
 Credits
 =======
+
 German translation by Uwe Schulz
 Updated to work with Piwik v1.5 by Jess Telford @ Zibbet.com
 
